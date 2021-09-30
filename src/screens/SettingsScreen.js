@@ -1,10 +1,22 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import Button from '../components/Button';
+import {clearUser} from '../ducks/auth';
 
-const SettingsScreen = () => {
+const SettingsScreen = ({navigation}) => {
+  const currentUser = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  console.log(currentUser);
   return (
     <View>
-      <Text>Settings screen</Text>
+      <Button
+        label="LOGOUT"
+        onPress={() => {
+          dispatch(clearUser());
+          navigation.navigate('LOGIN');
+        }}
+      />
     </View>
   );
 };

@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import {SafeAreaView, Text} from 'react-native';
+import {useDispatch} from 'react-redux';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import KeyboardAvoidingViewWrapper from '../components/KBAvoidinView.js';
+import {setUser} from '../ducks/auth';
 import styles from '../styles/loginScreen';
 
 const LoginScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(null);
@@ -25,6 +29,15 @@ const LoginScreen = ({navigation}) => {
     }
     if (password?.length < 6) {
       setPasswordError('Password must be 6 or more characters');
+    }
+    if (!emailError && !passwordError) {
+      //store to redux ang logged inside
+      if (email === 'test@test.com' && password === '123456') {
+        dispatch(setUser(email, password));
+        navigation.navigate('MAIN_STACK');
+      } else {
+        setEmailError('User not registered');
+      }
     }
   };
 
@@ -50,7 +63,6 @@ const LoginScreen = ({navigation}) => {
           }}
         />
         {passwordError && <Text>{passwordError}</Text>}
-        <Button onPress={() => navigation.navigate('MAIN_STACK')} />
         <Button onPress={onLogin} label={'LOGIN'} />
       </KeyboardAvoidingViewWrapper>
     </SafeAreaView>
