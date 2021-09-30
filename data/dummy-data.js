@@ -1,7 +1,7 @@
 export const users = [
-  {email: 'test@test1.com', password: '1234561'},
-  {email: 'test@test2.com', password: '1234562'},
-  {email: 'test@test3.com', password: '1234563'},
+  {email: 'test@123.com', password: '123'},
+  {email: 'test@1234.com', password: '1234'},
+  {email: 'test@12345.com', password: '12345'},
 ];
 
 export const products = [
