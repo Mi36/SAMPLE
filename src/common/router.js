@@ -7,13 +7,30 @@ import LoginScreen from '../screens/LoginScreen';
 import OnboardinScreen from '../screens/OnboardinScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export const MainStack = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused
+              ? 'ios-information-circle'
+              : 'ios-information-circle-outline';
+          } else if (route.name === 'Settings') {
+            iconName = 'ios-list';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'gray',
+      })}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
