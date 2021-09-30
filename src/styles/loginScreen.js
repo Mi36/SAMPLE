@@ -14,6 +14,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
+  signin: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: 5,
+  },
+  signInlabel: {
+    color: 'red',
+  },
+  errorText: {
+    color: 'red',
+  },
 });
 
 export default styles;

@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OnboardinScreen from '../screens/OnboardinScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -46,6 +47,7 @@ const Router = () => {
         <Stack.Screen name="ENTRY" component={EntryScreen} />
         <Stack.Screen name="ONBOARDING" component={OnboardinScreen} />
         <Stack.Screen name="LOGIN" component={LoginScreen} />
+        <Stack.Screen name="SIGNUP" component={SignUpScreen} />
         <Stack.Screen name="MAIN_STACK" component={MainStack} />
       </Stack.Navigator>
     </NavigationContainer>

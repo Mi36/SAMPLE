@@ -6,10 +6,10 @@ import {REGEX} from '../common/constants';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import KeyboardAvoidingViewWrapper from '../components/KBAvoidinView.js';
-import {setUser} from '../ducks/auth';
+import {userRegister} from '../ducks/auth';
 import styles from '../styles/loginScreen';
 
-const LoginScreen = ({navigation}) => {
+const SignUpScreen = ({navigation}) => {
   const dispatch = useDispatch();
 
   const users = useSelector(state => state.auth.users);
@@ -29,41 +29,44 @@ const LoginScreen = ({navigation}) => {
   };
 
   const onSubmit = data => {
-    const {email, password} = data;
+    const {email} = data;
     const emailExist = users?.find(user => {
       return user.email === email;
     });
-    const matchingUser = users?.find(user => {
-      return user.email === email && user.password === password;
-    });
-    if (matchingUser) {
-      dispatch(setUser(email, password));
-      formReset();
-      navigation.navigate('MAIN_STACK');
+
+    if (emailExist) {
+      Alert.alert('Error', 'User with this email already exist', [
+        {
+          text: 'Cancel',
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            formReset();
+          },
+        },
+      ]);
     } else {
-      Alert.alert(
-        'Error',
-        emailExist ? 'Incorrect password' : 'User not registered',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => null,
-            style: 'cancel',
+      //add user to redux and navigate to login
+      dispatch(userRegister(data));
+      formReset();
+      Alert.alert('Success', 'Account created successfully', [
+        {
+          text: 'OK',
+          onPress: () => {
+            formReset();
+            navigation.navigate('LOGIN');
           },
-          {
-            text: 'OK',
-            onPress: () => {
-              formReset();
-            },
-          },
-        ],
-      );
+        },
+      ]);
     }
   };
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <Text style={styles.header}>Sign In</Text>
+      <Text style={styles.header}>Sign Up</Text>
       <KeyboardAvoidingViewWrapper>
         <View style={styles.subContainer}>
           <Controller
@@ -114,12 +117,11 @@ const LoginScreen = ({navigation}) => {
           {errors.password && (
             <Text style={styles.errorText}>{errors.password.message}</Text>
           )}
-          <Button onPress={handleSubmit(onSubmit)} label={'Sign In'} />
-
+          <Button onPress={handleSubmit(onSubmit)} label={'Sign Up'} />
           <View style={styles.signin}>
-            <Text>Not registered yet?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('SIGNUP')}>
-              <Text style={styles.signInlabel}> Sign Up</Text>
+            <Text>Registered?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('LOGIN')}>
+              <Text style={styles.signInlabel}> Sign In</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -128,4 +130,4 @@ const LoginScreen = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

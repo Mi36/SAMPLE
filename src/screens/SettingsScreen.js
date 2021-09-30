@@ -8,7 +8,7 @@ import styles from '../styles/settingsScreen';
 const SettingsScreen = ({navigation}) => {
   const currentUser = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  console.log(currentUser);
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <Text style={styles.user}>Logged in as</Text>

@@ -1,22 +1,32 @@
+import {users} from '../../data/dummy-data';
+
 const SET_USER = 'ducks/auth/SET_USER';
 const CLEAR_USER = 'ducks/auth/CLEAR_USER';
+const REGISTER_USER = 'ducks/auth/REGISTER_USER';
 
 const initialState = {
   email: null,
-  password: null,
+  users: users,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
-      const {email, password} = action;
+      const {email} = action;
       return {
+        ...state,
         email,
-        password,
       };
     case CLEAR_USER:
       return {
-        ...initialState,
+        ...state,
+        email: null,
+      };
+
+    case REGISTER_USER:
+      return {
+        ...state,
+        users: [...users, action.user],
       };
     default:
       return {...state};
@@ -29,6 +39,15 @@ export const setUser = (email, password) => {
       type: SET_USER,
       email,
       password,
+    });
+  };
+};
+
+export const userRegister = user => {
+  return dispatch => {
+    dispatch({
+      type: REGISTER_USER,
+      user,
     });
   };
 };
