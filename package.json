@@ -19,7 +19,6 @@
     "react-native-keyboard-aware-scroll-view": "APSL/react-native-keyboard-aware-scroll-view#pull/501/head",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
-    "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0"
