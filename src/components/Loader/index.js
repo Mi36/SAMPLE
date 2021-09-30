@@ -12,9 +12,7 @@ const Loader = () => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-
     justifyContent: 'center',
-    backgroundColor: 'pink',
   },
 });
 
