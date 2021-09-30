@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -49,27 +49,29 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      <Text style={styles.header}>Sign In</Text>
       <KeyboardAvoidingViewWrapper>
-        <Text>LoginScreen</Text>
-        <Input
-          placeholder={'Email'}
-          value={email}
-          onChange={text => {
-            setEmailError(null);
-            setEmail(text);
-          }}
-        />
-        {emailError && <Text>{emailError}</Text>}
-        <Input
-          placeholder={'Password'}
-          value={password}
-          onChange={text => {
-            setPasswordError(null);
-            setPassword(text);
-          }}
-        />
-        {passwordError && <Text>{passwordError}</Text>}
-        <Button onPress={onLogin} label={'LOGIN'} />
+        <View style={styles.subContainer}>
+          <Input
+            placeholder={'Email'}
+            value={email}
+            onChange={text => {
+              setEmailError(null);
+              setEmail(text);
+            }}
+          />
+          {emailError && <Text>{emailError}</Text>}
+          <Input
+            placeholder={'Password'}
+            value={password}
+            onChange={text => {
+              setPasswordError(null);
+              setPassword(text);
+            }}
+          />
+          {passwordError && <Text>{passwordError}</Text>}
+          <Button onPress={onLogin} label={'Sign In'} />
+        </View>
       </KeyboardAvoidingViewWrapper>
     </SafeAreaView>
   );

@@ -30,7 +30,7 @@ Button.defaultProps = {
 const styles = StyleSheet.create({
   main: {
     height: 60,
-    backgroundColor: '#F55352',
+    backgroundColor: '#252733',
     alignItems: 'center',
     borderRadius: 10,
     justifyContent: 'center',
@@ -39,5 +39,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 20,
     fontWeight: '700',
+    color: 'white',
   },
 });
