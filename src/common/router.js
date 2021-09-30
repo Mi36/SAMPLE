@@ -2,6 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import EntryScreen from '../screens/EntryScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OnboardinScreen from '../screens/OnboardinScreen';
@@ -28,6 +29,7 @@ const Router = () => {
           headerShown: false,
           screenOrientation: 'portrait',
         }}>
+        <Stack.Screen name="ENTRY" component={EntryScreen} />
         <Stack.Screen name="ONBOARDING" component={OnboardinScreen} />
         <Stack.Screen name="LOGIN" component={LoginScreen} />
         <Stack.Screen name="SIGNUP" component={SignUpScreen} />
