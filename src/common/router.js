@@ -1,10 +1,24 @@
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OnboardinScreen from '../screens/OnboardinScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+export const MainStack = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+};
 
 const Router = () => {
   return (
@@ -16,6 +30,8 @@ const Router = () => {
         }}>
         <Stack.Screen name="ONBOARDING" component={OnboardinScreen} />
         <Stack.Screen name="LOGIN" component={LoginScreen} />
+        <Stack.Screen name="SIGNUP" component={SignUpScreen} />
+        <Stack.Screen name="MAIN_STACK" component={MainStack} />
       </Stack.Navigator>
     </NavigationContainer>
   );
