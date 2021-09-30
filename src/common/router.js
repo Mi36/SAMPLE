@@ -17,9 +17,9 @@ export const MainStack = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        headerShown: false,
         tabBarIcon: () => {
           let iconName;
-
           if (route.name === 'Home') {
             iconName = require('../../assets/home.png');
           } else if (route.name === 'Settings') {
