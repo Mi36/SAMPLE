@@ -5,11 +5,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 20,
   },
-  header: {
-    textAlign: 'center',
-    fontWeight: '600',
-    fontSize: 30,
-  },
   subContainer: {
     justifyContent: 'center',
     flex: 1,

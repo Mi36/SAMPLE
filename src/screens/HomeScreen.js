@@ -1,6 +1,7 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
+import {SafeAreaView, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
+import Header from '../components/Header';
 import Product from '../components/Product';
 import styles from '../styles/homeScreen';
 
@@ -10,7 +11,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <ScrollView>
-        <Text style={styles.header}>Products</Text>
+        <Header header="Products" />
         {items.map((item, index) => {
           const {id, description, image, price, name} = item;
           return (

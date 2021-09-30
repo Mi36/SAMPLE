@@ -4,6 +4,7 @@ import {Alert, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {REGEX} from '../common/constants';
 import Button from '../components/Button';
+import Header from '../components/Header';
 import Input from '../components/Input';
 import KeyboardAvoidingViewWrapper from '../components/KBAvoidinView.js';
 import {setUser} from '../ducks/auth';
@@ -61,7 +62,7 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <Text style={styles.header}>Sign In</Text>
+      <Header header="Sign In" />
       <KeyboardAvoidingViewWrapper>
         <View style={styles.subContainer}>
           <Controller

@@ -4,6 +4,7 @@ import {Alert, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {REGEX} from '../common/constants';
 import Button from '../components/Button';
+import Header from '../components/Header';
 import Input from '../components/Input';
 import KeyboardAvoidingViewWrapper from '../components/KBAvoidinView.js';
 import {userRegister} from '../ducks/auth';
@@ -64,7 +65,7 @@ const SignUpScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <Text style={styles.header}>Sign Up</Text>
+      <Header header={'Sign Up'} />
       <KeyboardAvoidingViewWrapper>
         <View style={styles.subContainer}>
           <Controller
