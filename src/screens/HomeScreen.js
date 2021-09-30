@@ -1,15 +1,16 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
-import {products} from '../../data/dummy-data';
+import {useSelector} from 'react-redux';
 import Product from '../components/Product';
 import styles from '../styles/homeScreen';
 
 const HomeScreen = () => {
+  const items = useSelector(state => state.product.items);
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <ScrollView>
         <Text style={styles.header}>Products</Text>
-        {products.map((item, index) => {
+        {items.map((item, index) => {
           const {id, description, image, price, name} = item;
           return (
             <Product
