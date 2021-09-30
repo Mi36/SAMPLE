@@ -3,7 +3,7 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import {persistReducer, persistStore} from 'redux-persist';
 import thunkMiddleware from 'redux-thunk';
 import auth from '../ducks/auth';
-import common from '../ducks/common';
+import users from '../ducks/users';
 
 const rootPersistConfig = {
   key: 'root',
@@ -20,7 +20,7 @@ const getPersistConfig = (key, blacklist) => {
 
 const rootReducer = combineReducers({
   auth: persistReducer(getPersistConfig('auth', []), auth),
-  common: persistReducer(getPersistConfig('common', []), common),
+  users: persistReducer(getPersistConfig('users', []), users),
 });
 
 const store = createStore(

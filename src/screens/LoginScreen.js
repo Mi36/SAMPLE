@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, Text} from 'react-native';
-import {useDispatch} from 'react-redux';
-import {users} from '../../data/dummy-data';
+import {useDispatch, useSelector} from 'react-redux';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import KeyboardAvoidingViewWrapper from '../components/KBAvoidinView.js';
@@ -15,6 +14,8 @@ const LoginScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+
+  const users = useSelector(state => state.users?.usersList);
 
   const onLogin = () => {
     setEmailError(null);
@@ -34,7 +35,7 @@ const LoginScreen = ({navigation}) => {
     }
     if (!emailError && !passwordError) {
       //store to redux ang logged inside
-      const existingUser = users.find(user => {
+      const existingUser = users?.find(user => {
         return user.email === email && user.password === password;
       });
       if (existingUser) {
