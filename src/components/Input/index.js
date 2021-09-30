@@ -5,6 +5,7 @@ import {StyleSheet, TextInput} from 'react-native';
 const Input = ({onChange, value, placeholder}) => {
   return (
     <TextInput
+      autoCapitalize="none"
       style={styles.input}
       onChangeText={onChange}
       value={value}

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     justifyContent: 'center',
+    marginTop: 20,
   },
   label: {
     fontSize: 25,
