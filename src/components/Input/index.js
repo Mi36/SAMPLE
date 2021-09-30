@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {StyleSheet, TextInput} from 'react-native';
 
-const Input = ({onChange, value, placeholder}) => {
+const Input = ({placeholder, value, onBlur, onChange}) => {
   return (
     <TextInput
+      onBlur={onBlur}
       autoCapitalize="none"
       style={styles.input}
       onChangeText={onChange}
@@ -19,12 +20,14 @@ export default Input;
 Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
 };
 
 Input.defaultProps = {
   placeholder: 'Enter',
-  value: null,
+  value: '',
+  onBlur: null,
   onChange: null,
 };
 
