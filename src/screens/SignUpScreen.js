@@ -1,12 +1,13 @@
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {Alert, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, SafeAreaView, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {REGEX} from '../common/constants';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import Input from '../components/Input';
 import KeyboardAvoidingViewWrapper from '../components/KBAvoidinView.js';
+import Link from '../components/Link';
 import {userRegister} from '../ducks/auth';
 import styles from '../styles/loginScreen';
 
@@ -117,12 +118,11 @@ const SignUpScreen = ({navigation}) => {
             <Text style={styles.errorText}>{errors.password.message}</Text>
           )}
           <Button onPress={handleSubmit(onSubmit)} label={'Sign Up'} />
-          <View style={styles.signin}>
-            <Text>Registered?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('LOGIN')}>
-              <Text style={styles.signInlabel}> Sign In</Text>
-            </TouchableOpacity>
-          </View>
+          <Link
+            prefix="Registered?"
+            suffix="Sign In"
+            onPress={() => navigation.navigate('LOGIN')}
+          />
         </View>
       </KeyboardAvoidingViewWrapper>
     </SafeAreaView>
