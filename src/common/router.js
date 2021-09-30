@@ -2,6 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import {Image, StyleSheet} from 'react-native';
 import EntryScreen from '../screens/EntryScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -14,7 +15,21 @@ const Tab = createBottomTabNavigator();
 
 export const MainStack = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: () => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = require('../../assets/home.png');
+          } else if (route.name === 'Settings') {
+            iconName = require('../../assets/settings.png');
+          }
+          return <Image source={iconName} style={styles.image} />;
+        },
+        tabBarActiveTintColor: 'red',
+        tabBarInactiveTintColor: 'gray',
+      })}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
@@ -38,5 +53,12 @@ const Router = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    width: 25,
+    height: 25,
+  },
+});
 
 export default Router;
