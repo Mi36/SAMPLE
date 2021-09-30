@@ -6,8 +6,9 @@ import {clearUser} from '../ducks/auth';
 import styles from '../styles/settingsScreen';
 
 const SettingsScreen = ({navigation}) => {
-  const currentUser = useSelector(state => state.auth);
   const dispatch = useDispatch();
+
+  const currentUser = useSelector(state => state.auth);
 
   return (
     <SafeAreaView style={styles.safeAreaView}>

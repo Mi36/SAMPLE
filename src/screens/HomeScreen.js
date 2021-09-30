@@ -1,12 +1,24 @@
-import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import React, {useEffect} from 'react';
+import {BackHandler, SafeAreaView, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
 import Header from '../components/Header';
 import Product from '../components/Product';
 import styles from '../styles/homeScreen';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const items = useSelector(state => state.product.items);
+
+  useEffect(() => {
+    const backAction = () => {
+      BackHandler.exitApp();
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => backHandler.remove();
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
