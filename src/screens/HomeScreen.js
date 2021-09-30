@@ -6,6 +6,7 @@ import styles from '../styles/homeScreen';
 
 const HomeScreen = () => {
   const items = useSelector(state => state.product.items);
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <ScrollView>
