@@ -52,9 +52,7 @@ const LoginScreen = ({navigation}) => {
           },
           {
             text: 'OK',
-            onPress: () => {
-              formReset();
-            },
+            onPress: () => {},
           },
         ],
       );

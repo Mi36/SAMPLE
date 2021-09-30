@@ -43,9 +43,7 @@ const SignUpScreen = ({navigation}) => {
         },
         {
           text: 'OK',
-          onPress: () => {
-            formReset();
-          },
+          onPress: () => formReset(),
         },
       ]);
     } else {
